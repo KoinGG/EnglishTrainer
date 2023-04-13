@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:EnglishTrainer.ViewModels"
+        mc:Ignorable="d" Icon="/Assets/avalonia-logo.ico"
+        x:Class="EnglishTrainer.Views.HistoryWindow"
+        x:Name="History"
+        d:DesignWidth="400" d:DesignHeight="500"
+        Width="400" Height="500"
+        MaxWidth="400" MaxHeight="500"
+        MinWidth="400" MinHeight="500"
+        Title="History"
+        WindowStartupLocation="CenterScreen"
+        Background="#a8e4a0">
+
+  <Design.DataContext>
+    <vm:HistoryWindowVM/>
+  </Design.DataContext>
+
+  <Grid>
+    <StackPanel>
+
+      <ListBox
+          Background="#a8e4a0"
+          Items="{Binding ResultHistories}" 
+          x:Name="Listbox_ResultHistory"
+          Height="400">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Label
+                Background="Aqua"
+                Content="{Binding Date}"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+								FontSize="16" FontWeight="DemiBold"
+                Height="14"/>
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+
+      <Button
+          Content="Назад" x:Name="Btn_Cancel"
+          Command="{Binding CancelCommand}"
+          CommandParameter="{Binding ElementName=History}"
+          HorizontalAlignment="Center"
+          Background="#228b22" CornerRadius="10" 
+          FontSize="16" FontFamily="ArialNova"
+          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+          Width="75" Height="35"
+          Margin="0,25,0,0"/>
+
+    </StackPanel>
+  </Grid>
+  
+</Window>

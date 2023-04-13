@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:EnglishTrainer.ViewModels"
+        mc:Ignorable="d" Icon="/Assets/avalonia-logo.ico"
+        x:Class="EnglishTrainer.Views.AuthWindow"
+        x:Name="Auth"
+        d:DesignWidth="400" d:DesignHeight="250"
+        Width="400" Height="250"
+        MaxWidth="400" MaxHeight="250"
+        MinWidth="400" MinHeight="250"
+        Title="Авторизация"
+        WindowStartupLocation="CenterScreen"
+        Background="#a8e4a0">
+
+  <Design.DataContext>
+    <vm:AuthWindowVM/>
+  </Design.DataContext>
+
+  <Grid>
+    <StackPanel>
+      <TextBlock
+          Text="Авторизация"
+          HorizontalAlignment="Center"
+          FontSize="32" FontFamily="ArialNova" FontWeight="Medium"
+          Margin="0,35,0,0"/>
+      <TextBox
+          Watermark="Введите логин" Text="{Binding User.Login}"
+          HorizontalAlignment="Center"
+          FontSize="16" FontFamily="ArialNova"
+          CornerRadius="15" Background="#bdecb6"
+          Width="250" Height="35"
+          Margin="0,30,0,0"/>
+      <Button
+          Content="Готово"
+          Command="{Binding SignInAcceptCommand}"
+          CommandParameter="{Binding ElementName=Auth}"
+          HorizontalAlignment="Center"
+          Background="#228b22"
+          CornerRadius="10" FontSize="14" FontFamily="ArialNova"
+          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+          Width="100" Height="40"
+          Margin="0,45,0,0"/>
+    </StackPanel>
+  </Grid>
+  
+</Window>

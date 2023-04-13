@@ -1,0 +1,21 @@
+create table if not exists "User"
+(
+	"UserID" int not null primary key generated always as identity,
+	"Login" varchar(15) not null unique
+);
+
+create table if not exists "Word"
+(
+	"WordID" int not null primary key generated always as identity,
+	"UserID" int not null references "User",
+	"EnglishVersion" varchar not null,
+	"RussianVersion" varchar not null
+);
+
+create table if not exists "ResultHistory"
+(
+    "UserID" int not null references "User",
+    "Date" date not null default current_date,
+    "Time" time not null default current_time,
+    "CurrentAnswerPersentage" float not null
+)

@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:EnglishTrainer.ViewModels"
+        mc:Ignorable="d" Icon="/Assets/avalonia-logo.ico"
+        x:Class="EnglishTrainer.Views.AddWordsWindow"
+        x:Name="AddWords"
+        d:DesignWidth="500" d:DesignHeight="300"
+        Width="500" Height="300"
+        MaxWidth="500" MaxHeight="300"
+        MinWidth="500" MinHeight="300"
+        Title="AddWords"
+        WindowStartupLocation="CenterScreen"
+        Background="#a8e4a0">
+
+  <Design.DataContext>
+    <vm:AddWordsWindowVM/>
+  </Design.DataContext>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="2*"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    
+    <StackPanel 
+        Grid.Row="0"
+        Orientation="Horizontal">
+      
+      <TextBox
+          Watermark="Английское слово" Text="{Binding Word.EnglishVersion}"
+          x:Name="TextBlock_English"
+          VerticalAlignment="Center"
+          FontSize="18" FontFamily="ArialNova"
+          CornerRadius="15" Background="#bdecb6"
+          Width="200" Height="40"
+          Margin="25,0,0,0"/>
+      
+      <TextBox
+          Watermark="Русское слово" Text="{Binding Word.RussianVersion}"
+          x:Name="TextBlock_Russian"
+          VerticalAlignment="Center"
+          FontSize="18" FontFamily="ArialNova"
+          CornerRadius="15" Background="#bdecb6"
+          Width="200" Height="40"
+          Margin="50,0,0,0"/>
+      
+    </StackPanel>
+
+    <StackPanel
+        Grid.Row="1" Orientation="Horizontal">
+      
+      <Button
+          Content="Добавить"
+          Command="{Binding AddWordCommand}"
+          CommandParameter="{Binding ElementName=AddWords}"
+          VerticalAlignment="Top"
+          Background="#228b22"
+          CornerRadius="10" FontSize="16" FontFamily="ArialNova"
+          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+          Width="100" Height="40"
+          Margin="137.5,0,0,0"/>
+      <Button
+          Content="Назад"
+          Command="{Binding CancelCommand}"
+          CommandParameter="{Binding ElementName=AddWords}"
+          VerticalAlignment="Top"
+          Background="#228b22"
+          CornerRadius="10" FontSize="16" FontFamily="ArialNova"
+          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+          Width="100" Height="40"
+          Margin="25,0,0,0"/>
+      
+    </StackPanel>
+    
+  </Grid>
+  
+</Window>

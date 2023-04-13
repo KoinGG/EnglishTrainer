@@ -1,0 +1,29 @@
+﻿        
+        #region [Private Fields]
+
+
+
+        #endregion
+
+        public _VM() 
+        {
+
+        }
+
+        #region [Properties]
+
+
+
+        #region [Commands Declaration]
+
+
+
+        #endregion
+
+        #endregion
+
+        #region [Methods]
+
+
+
+        #endregion
