@@ -90,7 +90,7 @@ namespace EnglishTrainer.ViewModels
                     }
                     catch 
                     {
-                        ErrorMessage.ShowErrorMessage(window, "Не удалось создать пользователя");
+                        Message.ShowDialogMessage(window, "Не удалось создать пользователя");
                     }                    
                 }
                 else

@@ -14,6 +14,7 @@ create table if not exists "Word"
 
 create table if not exists "ResultHistory"
 (
+	"ResultHistoryID" int not null primary key generated always as identity,
     "UserID" int not null references "User",
     "Date" date not null default current_date,
     "Time" time not null default current_time,

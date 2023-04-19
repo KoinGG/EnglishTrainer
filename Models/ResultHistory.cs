@@ -5,6 +5,8 @@ namespace EnglishTrainer.Models;
 
 public partial class ResultHistory
 {
+    public int ResultHistoryId { get; set; }
+
     public int UserId { get; set; }
 
     public DateOnly Date { get; set; }

@@ -16,7 +16,7 @@ public partial class Word
 
     public virtual User User { get; set; } = null!;
 
-    [NotMapped] public bool IsAnswered { get; set; } = false;
+    //[NotMapped] public bool IsAnswered { get; set; } = false;
 
-    [NotMapped] public bool IsCorrect { get; set; } = false;
+    //[NotMapped] public bool IsCorrect { get; set; } = false;
 }

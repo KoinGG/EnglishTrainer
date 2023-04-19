@@ -20,6 +20,7 @@ namespace EnglishTrainer.ViewModels
         private AddWordsWindow _addWordsWindow;
 
         private Word _word = new Word();
+
         private string _englishVersion;
         private string _russianVersion;
 
@@ -90,14 +91,14 @@ namespace EnglishTrainer.ViewModels
                 DbContextProvider.GetContext().Words.Add(Word);
                 DbContextProvider.GetContext().SaveChanges();                
 
-                ErrorMessage.ShowErrorMessage(window, "Слово добавлено");
+                Message.ShowDialogMessage(window, "Слово добавлено");
 
                 _addWordsWindow.TextBlock_English.Clear();
                 _addWordsWindow.TextBlock_Russian.Clear();
             }
             catch
             {
-                ErrorMessage.ShowErrorMessage(window, "Не удалось добавить слово");
+                Message.ShowDialogMessage(window, "Не удалось добавить слово");
             }
         }
         private void CancelCommandImpl(Window window)

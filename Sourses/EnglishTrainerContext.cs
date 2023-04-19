@@ -30,10 +30,13 @@ public partial class EnglishTrainerContext : DbContext
     {
         modelBuilder.Entity<ResultHistory>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("ResultHistory");
+            entity.HasKey(e => e.ResultHistoryId).HasName("ResultHistory_pkey");
 
+            entity.ToTable("ResultHistory");
+
+            entity.Property(e => e.ResultHistoryId)
+                .UseIdentityAlwaysColumn()
+                .HasColumnName("ResultHistoryID");
             entity.Property(e => e.Date).HasDefaultValueSql("CURRENT_DATE");
             entity.Property(e => e.Time).HasDefaultValueSql("CURRENT_TIME");
             entity.Property(e => e.UserId).HasColumnName("UserID");
