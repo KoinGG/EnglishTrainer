@@ -28,14 +28,21 @@
           Height="400">
         <ListBox.ItemTemplate>
           <DataTemplate>
-            <Grid>
-              <Label
-                Background="Aqua"
-                Content="{Binding Date}"
-								HorizontalAlignment="Center"
-								VerticalAlignment="Center"
-								FontSize="16" FontWeight="DemiBold"
-                Height="14"/>
+            <Grid>               
+                <Label
+                  Content="{Binding Date}"
+								  HorizontalAlignment="Left"
+								  FontSize="10"/>
+                <Label
+                  Content="{Binding Time}"
+								  HorizontalAlignment="Left"
+								  FontSize="10"
+                  Margin="60,0,0,0"/>
+                
+                <TextBlock
+                  Text="{Binding CurrentAnswerPersentage, StringFormat=' {0}% верных'}"                  
+                  HorizontalAlignment="Center"
+                  FontSize="20" FontWeight="DemiBold"/>
             </Grid>
           </DataTemplate>
         </ListBox.ItemTemplate>

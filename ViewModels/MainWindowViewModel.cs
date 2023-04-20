@@ -116,15 +116,12 @@ namespace EnglishTrainer.ViewModels
 
                         if (_selectedRussianWord.WordId == _selectedEnglishWord.WordId)
                         {
-                            MessageBoxManager.GetMessageBoxStandardWindow($"Ошибка", $"Правильно", ButtonEnum.Ok, Icon.Warning).Show();
                             CountRightAnswers += 1;
 
                             EnglishWords.Remove(_selectedEnglishWord);
                         }
                         else
                         {
-                            MessageBoxManager.GetMessageBoxStandardWindow($"Ошибка", $"Неправильно", ButtonEnum.Ok, Icon.Warning).Show();
-
                             EnglishWords.Remove(_selectedEnglishWord);
                         }
 
@@ -142,7 +139,7 @@ namespace EnglishTrainer.ViewModels
                                 DbContextProvider.GetContext().ResultHistories.Add(ResultHistory);
                                 DbContextProvider.GetContext().SaveChanges();
                             }
-                            catch 
+                            catch
                             {
                                 Message.ShowMessage($"Не удалось сохранить историю", $"Ошибка");
                             }
@@ -155,7 +152,7 @@ namespace EnglishTrainer.ViewModels
                 }
                 catch
                 {
-                    Message.ShowMessage($"Выбранное слово = null", $"Ошибка: null");
+                    
                 }
             }
         }
