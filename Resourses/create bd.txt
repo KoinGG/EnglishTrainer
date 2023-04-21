@@ -19,4 +19,4 @@ create table if not exists "ResultHistory"
     "Date" date not null default current_date,
     "Time" time not null default current_time,
     "CurrentAnswerPersentage" float not null
-)
+);

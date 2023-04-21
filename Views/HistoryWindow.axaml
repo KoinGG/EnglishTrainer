@@ -21,14 +21,26 @@
   <Grid>
     <StackPanel>
 
+      <ComboBox
+          Width="300"
+          HorizontalAlignment="Center"
+          CornerRadius="10"
+          SelectedIndex="{Binding SelectedFilter}"
+          Margin="0,15,0,15">
+        <TextBlock Text="Новые"/>
+        <TextBlock Text="Старые"/>
+        <TextBlock Text="По возрастанию процента верных"/>
+        <TextBlock Text="По убыванию процента верных"/>
+      </ComboBox>
+
       <ListBox
           Background="#a8e4a0"
           Items="{Binding ResultHistories}" 
           x:Name="Listbox_ResultHistory"
-          Height="400">
+          Height="370">
         <ListBox.ItemTemplate>
           <DataTemplate>
-            <Grid>               
+            <Grid>
                 <Label
                   Content="{Binding Date}"
 								  HorizontalAlignment="Left"
