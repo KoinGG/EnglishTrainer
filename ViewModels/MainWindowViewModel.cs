@@ -44,8 +44,8 @@ namespace EnglishTrainer.ViewModels
             RussianWords = new ObservableCollection<Word>(WordsList.OrderBy(x => random.Next()).ToList());
             EnglishWords = new ObservableCollection<Word>(WordsList);
 
-            CancelCommand = ReactiveCommand.Create<Window>(CancelCommandImpl);
-            ContinueCommand = ReactiveCommand.Create<Window>(ContinueCommandImpl);
+            ContinueCommand = ReactiveCommand.Create(ContinueCommandImpl);
+            CancelCommand = ReactiveCommand.Create<Window>(CancelCommandImpl);            
         }
 
         #region [Properties]
@@ -129,6 +129,8 @@ namespace EnglishTrainer.ViewModels
                         {
                             Message.ShowMessage($"{CountRightAnswers * 10}%", $"Результат");
 
+                            _mainWindow.Btn_Continue.IsEnabled = true;
+
                             try
                             {
                                 ResultHistory.Date = DateOnly.FromDateTime(DateTime.Now);
@@ -159,8 +161,8 @@ namespace EnglishTrainer.ViewModels
 
         #region [Commands Declaration]
 
-        public ReactiveCommand<Window, Unit> CancelCommand { get; }
-        public ReactiveCommand<Window, Unit> ContinueCommand { get; }
+        public ReactiveCommand<Unit, Unit> ContinueCommand { get; }
+        public ReactiveCommand<Window, Unit> CancelCommand { get; }     
 
         #endregion
 
@@ -168,7 +170,7 @@ namespace EnglishTrainer.ViewModels
 
         #region [Methods]
 
-        private void ContinueCommandImpl(Window window)
+        private void ContinueCommandImpl()
         {
             Random random = new Random();
             var WordsList = DbContextProvider.GetContext().Words.Where(x => x.UserId == AuthWindowVM.CurrentUser.UserId).OrderBy(x => Guid.NewGuid()).Take(10).ToList();
@@ -178,6 +180,10 @@ namespace EnglishTrainer.ViewModels
 
             RussianWords.Add(WordsList.OrderBy(x => random.Next()).ToList());
             EnglishWords.Add(WordsList);
+
+            CountAnswers = 0;
+            CountRightAnswers = 0;
+            _mainWindow.Btn_Continue.IsEnabled = false;
         }
 
         private async void CancelCommandImpl(Window window)
