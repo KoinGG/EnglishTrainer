@@ -44,7 +44,7 @@ namespace EnglishTrainer.ViewModels
             RussianWords = new ObservableCollection<Word>(WordsList.OrderBy(x => random.Next()).ToList());
             EnglishWords = new ObservableCollection<Word>(WordsList);
 
-            ContinueCommand = ReactiveCommand.Create(ContinueCommandImpl);
+            ContinueCommand = ReactiveCommand.Create<Window>(ContinueCommandImpl);
             CancelCommand = ReactiveCommand.Create<Window>(CancelCommandImpl);            
         }
 
@@ -140,6 +140,9 @@ namespace EnglishTrainer.ViewModels
 
                                 DbContextProvider.GetContext().ResultHistories.Add(ResultHistory);
                                 DbContextProvider.GetContext().SaveChanges();
+
+                                CountAnswers = 0;
+                                CountRightAnswers = 0;
                             }
                             catch
                             {
@@ -161,7 +164,7 @@ namespace EnglishTrainer.ViewModels
 
         #region [Commands Declaration]
 
-        public ReactiveCommand<Unit, Unit> ContinueCommand { get; }
+        public ReactiveCommand<Window, Unit> ContinueCommand { get; }
         public ReactiveCommand<Window, Unit> CancelCommand { get; }     
 
         #endregion
@@ -170,7 +173,7 @@ namespace EnglishTrainer.ViewModels
 
         #region [Methods]
 
-        private void ContinueCommandImpl()
+        private void ContinueCommandImpl(Window window)
         {
             Random random = new Random();
             var WordsList = DbContextProvider.GetContext().Words.Where(x => x.UserId == AuthWindowVM.CurrentUser.UserId).OrderBy(x => Guid.NewGuid()).Take(10).ToList();
@@ -181,8 +184,6 @@ namespace EnglishTrainer.ViewModels
             RussianWords.Add(WordsList.OrderBy(x => random.Next()).ToList());
             EnglishWords.Add(WordsList);
 
-            CountAnswers = 0;
-            CountRightAnswers = 0;
             _mainWindow.Btn_Continue.IsEnabled = false;
         }
 
