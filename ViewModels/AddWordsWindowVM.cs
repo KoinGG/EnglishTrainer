@@ -3,12 +3,7 @@ using EnglishTrainer.Models;
 using EnglishTrainer.Sourses;
 using EnglishTrainer.Views;
 using ReactiveUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EnglishTrainer.ViewModels
 {

@@ -20,11 +20,13 @@
 
   <Grid>
     <StackPanel>
+      
       <TextBlock
           Text="Авторизация"
           HorizontalAlignment="Center"
           FontSize="32" FontFamily="ArialNova" FontWeight="Medium"
           Margin="0,35,0,0"/>
+      
       <TextBox
           Watermark="Введите логин" Text="{Binding User.Login}"
           HorizontalAlignment="Center"
@@ -32,6 +34,7 @@
           CornerRadius="15" Background="#bdecb6"
           Width="250" Height="35"
           Margin="0,30,0,0"/>
+      
       <Button
           Content="Готово"
           Command="{Binding SignInAcceptCommand}"
@@ -43,6 +46,5 @@
           Width="100" Height="40"
           Margin="0,45,0,0"/>
     </StackPanel>
-  </Grid>
-  
+  </Grid>  
 </Window>
