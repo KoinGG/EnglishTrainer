@@ -79,7 +79,7 @@ namespace EnglishTrainer.ViewModels
             }
             else
             {
-                var result = await MessageBoxManager.GetMessageBoxStandardWindow("Регистрация", "Хотите зарегестрироваться?", ButtonEnum.YesNo, Icon.Question, WindowStartupLocation.CenterScreen).ShowDialog(window);
+                var result = await MessageBoxManager.GetMessageBoxStandardWindow("Регистрация", "Подтверждаете регистрацию?", ButtonEnum.YesNo, Icon.Question, WindowStartupLocation.CenterScreen).ShowDialog(window);
 
                 if(result == ButtonResult.Yes) 
                 {
