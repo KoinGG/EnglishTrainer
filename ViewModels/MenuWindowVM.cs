@@ -67,7 +67,11 @@ namespace EnglishTrainer.ViewModels
 
         private void QuitCommandImpl(Window window)
         {
-            Environment.Exit(0);
+            AuthWindowVM.CurrentUser = null;
+
+            var AuthWindow = new AuthWindow();
+            AuthWindow.Show();
+            window.Close();
         }
 
         #endregion

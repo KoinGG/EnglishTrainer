@@ -127,7 +127,7 @@ namespace EnglishTrainer.ViewModels
 
                         if(CountAnswers == 10)
                         {
-                            Message.ShowMessage($"{CountRightAnswers * 10}%", $"Результат");
+                            Message.ShowMessage($"Ваш процент правильных ответов равен: {CountRightAnswers * 10}%", $"Результат");
 
                             _mainWindow.Btn_Continue.IsEnabled = true;
 

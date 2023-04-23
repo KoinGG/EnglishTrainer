@@ -10,7 +10,7 @@
         Width="500" Height="300"
         MaxWidth="500" MaxHeight="300"
         MinWidth="500" MinHeight="300"
-        Title="AddWords"
+        Title="Добавление Слова"
         WindowStartupLocation="CenterScreen"
         Background="#a8e4a0">
 
